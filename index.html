@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MaxkorotZI</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="hero">
+        <div class="brand">
+          <div class="brand-mark">MZ</div>
+          <div>
+            <h1>MaxkorotZI</h1>
+            <p>Защищенный P2P-мессенджер без регистрации</p>
+          </div>
+        </div>
+      </header>
+
+      <section class="card">
+        <h2>Ваше устройство</h2>
+        <div class="row">
+          <div>
+            <label>Ваш ID</label>
+            <div class="pill" id="my-id">—</div>
+          </div>
+          <button class="ghost" id="copy-id">Скопировать</button>
+        </div>
+        <label>Публичный ключ</label>
+        <textarea readonly id="my-pub" rows="2"></textarea>
+        <div class="row">
+          <button id="export-seed">Экспорт Seed</button>
+          <button class="ghost" id="regenerate">Сбросить ключи</button>
+        </div>
+        <div class="row">
+          <input id="import-seed-input" placeholder="Seed (base64)" />
+          <button class="ghost" id="import-seed">Импорт Seed</button>
+        </div>
+        <small class="muted">Приватный ключ хранится локально в браузере и никогда не отправляется.</small>
+      </section>
+
+      <section class="card">
+        <h2>Сигналинг (GunDB)</h2>
+        <label>Room ID</label>
+        <div class="row">
+          <input id="room-id" placeholder="Например: maxkorotzi-demo" />
+          <button id="join-room">Войти</button>
+        </div>
+        <small class="muted">Room ID нужно сообщить собеседнику. Это не логин, а канал сигналинга.</small>
+      </section>
+
+      <section class="card">
+        <h2>Подключение к собеседнику</h2>
+        <label>Peer ID</label>
+        <input id="peer-id" placeholder="ID собеседника" />
+        <label>Публичный ключ собеседника</label>
+        <textarea id="peer-pub" rows="2" placeholder="Base64 public key"></textarea>
+        <button id="start-connection">Создать соединение</button>
+      </section>
+
+      <section class="card chat">
+        <h2>Чат</h2>
+        <div id="status" class="status">Не подключено</div>
+        <div id="messages" class="messages"></div>
+        <div class="row">
+          <input id="message-input" placeholder="Введите сообщение" />
+          <button id="send-message">Отправить</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/gun/gun.min.js"></script>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
